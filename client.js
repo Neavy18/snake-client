@@ -5,28 +5,28 @@ const connect = function(){
     host: '165.227.47.243',
     port: 50541
   });
-  conn.on('data',(data) => {
-    console.log("Successfully connected to game server");
+  
+  conn.setEncoding("utf8");
+  
+  conn.on("connect",(data) => {
+    console.log("Successfully connected to game server");  
+    conn.write("Name: SNU")
+    conn.write("Move: up")
   });
 
-  conn.write(
-    "Name: SNU"
-  )
-  conn.on('data',(data) => {
+  conn.on("data",(data) => {
+    console.log("Data received");  
     console.log(data.toString());
-    //console.log("Successfully connected to game server");
-    //conn.write("Name: SNU") 
     conn.end();
   });
 
-  conn.setEncoding("utf8");
+  
   return conn;
 };
 
-console.log("Connecting ...");
-connect();
+//console.log("Connecting ...");
+//connect();
 
 module.exports = {
   connect,
-
 };
