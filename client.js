@@ -11,7 +11,6 @@ const connect = function(){
   conn.on("connect",(data) => {
     console.log("Successfully connected to game server");  
     conn.write("Name: SNU")
-    conn.write("Move: up")
   });
 
   conn.on("data",(data) => {
@@ -20,12 +19,9 @@ const connect = function(){
     conn.end();
   });
 
-  
   return conn;
 };
 
-//console.log("Connecting ...");
-//connect();
 
 module.exports = {
   connect,
